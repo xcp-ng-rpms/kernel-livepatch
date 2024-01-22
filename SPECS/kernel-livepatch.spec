@@ -1,22 +1,18 @@
-%global package_speccommit 07888cf92e2205d9b0bd987e12ae7e464741f915
-%global package_srccommit v1.0.1
+%global package_speccommit 2b0826ac012d87713ad2fcd922ac148be1dc1cde
+%global package_srccommit v1.0.3
 
 %global TO_VER_REL 4.19.19-8.0.19
 
 Name: kernel-livepatch
 Summary: Live patches for Linux
-Version: 1.0.1
+Version: 1.0.3
 Release: 1%{?xsrel}%{?dist}
 
 Group: System Environment/Kernel
 License: GPLv2
-Source0: kernel-livepatch-1.0.1.tar.gz
+Source0: kernel-livepatch-1.0.3.tar.gz
 
 BuildRequires: kpatch-devel
-BuildRequires: bc
-BuildRequires: bison
-BuildRequires: flex
-BuildRequires: elfutils
 
 # BuildRequires for each base
 # END
@@ -52,6 +48,12 @@ fi
 
 
 %changelog
+* Wed Sep 13 2023 Ross Lagerwall <ross.lagerwall@citrix.com> - 1.0.3-1
+- CP-38520: Add Jira support to query released Kernel in last 6 months
+- CA-378916: Drop hard-coded build dependencies
+- CA-378916: Increase the length of module names to 55
+- CA-378916: Run prepare-build script if it exists
+
 * Wed Jul 20 2022 Ming Lu <ming.lu@citrix.com> - 1.0.1-1
 - Initial release
 
