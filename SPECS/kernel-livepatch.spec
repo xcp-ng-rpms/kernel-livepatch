@@ -1,21 +1,26 @@
-%global package_speccommit 2b0826ac012d87713ad2fcd922ac148be1dc1cde
-%global package_srccommit v1.0.3
+%global package_speccommit 0e0e2e526b460d499edd786129446216e651d12e
+%global package_srccommit v1.0.4
 
-%global TO_VER_REL 4.19.19-8.0.19
+%global TO_VER_REL 4.19.19-8.0.33.xs8
 
 Name: kernel-livepatch
 Summary: Live patches for Linux
-Version: 1.0.3
+Version: 1.0.4
 Release: 1%{?xsrel}%{?dist}
 
 Group: System Environment/Kernel
 License: GPLv2
-Source0: kernel-livepatch-1.0.3.tar.gz
+Source0: kernel-livepatch-1.0.4.tar.gz
 
 BuildRequires: kpatch-devel
 
 # BuildRequires for each base
-# END
+BuildRequires: kernel-lp-devel_4.19.19_8.0.32.xs8
+# EndBuildRequires
+
+# Provides for each live patch
+Provides: livepatch(component/kernel/base/4.19.19-8.0.32.xs8/to/4.19.19-8.0.33.xs8/base-buildid/5de7b009ae6f0dee93f7d3f7041f9ef51502fdfb)
+# EndProvides
 
 %description
 Contains live patches to be applied against various Linux versions.
@@ -48,6 +53,9 @@ fi
 
 
 %changelog
+* Mon Jan 15 2024 Alejandro Vallejo <alejandro.vallejo@cloud.com> - 1.0.4-1
+- CA-387401: Add XSA-448 livepatch to release 8.0.32
+
 * Wed Sep 13 2023 Ross Lagerwall <ross.lagerwall@citrix.com> - 1.0.3-1
 - CP-38520: Add Jira support to query released Kernel in last 6 months
 - CA-378916: Drop hard-coded build dependencies
